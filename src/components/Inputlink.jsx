@@ -15,7 +15,7 @@ function Inputlink() {
     setErr(null); setUserInfo(null);
 
     try {
-        await axios.post("/login", {
+        await axios.post("http://85.9.97.246:8080/login", {
             username: "arsalan",
             password: "Arsi73Arsi73"}, 
             {
@@ -28,7 +28,7 @@ function Inputlink() {
     }
 
     try {
-        const response = await axios.get("/panel/api/inbounds/getClientTraffics/"+ user, 
+        const response = await axios.get("http://85.9.97.246:8080/panel/api/inbounds/getClientTraffics/"+ user, 
             { 
                 withCredentials: true });
     
