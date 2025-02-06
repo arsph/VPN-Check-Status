@@ -17,7 +17,7 @@ function Inputlink() {
     try {
         await axios.post("http://85.9.97.246:8080/login", {
             username: "arsalan",
-            password: "Arsi73Arsi73"}, 
+            password: "Arsi73Arsi73"},
             {
               withCredentials: true, // Allow cookies
             });
