@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import './App.css'
-import Inputlink from './components/inputlink'
+import './App.css';
+import Inputlink from "./components/Inputlink.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
