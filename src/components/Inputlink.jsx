@@ -15,7 +15,7 @@ function Inputlink() {
     setErr(null); setUserInfo(null);
 
     try {
-        await axios.post("https://api.parham-arsalan.workers.dev:8080/login", {
+        await axios.post("/login", {
             username: "arsalan",
             password: "Arsi73Arsi73"},
             {
@@ -28,7 +28,7 @@ function Inputlink() {
     }
 
     try {
-        const response = await axios.get("https://api.parham-arsalan.workers.dev:8080/panel/api/inbounds/getClientTraffics/"+ user, 
+        const response = await axios.get("/panel/api/inbounds/getClientTraffics/"+ user, 
             { 
                 withCredentials: true });
     
