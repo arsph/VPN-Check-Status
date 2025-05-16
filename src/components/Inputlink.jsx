@@ -15,7 +15,7 @@ function Inputlink() {
     setErr(null); setUserInfo(null);
 
     try {
-        await axios.post("/login", {
+        await axios.post("https://api2.benzorango.net:8080/login", {
             username: "arsalan",
             password: "Arsi73Arsi73"},
             {
@@ -28,7 +28,7 @@ function Inputlink() {
     }
 
     try {
-        const response = await axios.get("/panel/api/inbounds/getClientTraffics/"+ user, 
+        const response = await axios.get("https://api2.benzorango.net:8080/panel/api/inbounds/getClientTraffics/"+ user, 
             { 
                 withCredentials: true });
     
