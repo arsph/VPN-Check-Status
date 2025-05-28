@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import logo from "../assets/img/logo.png";
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
 
 function Inputlink() {
 
@@ -117,8 +118,9 @@ function Inputlink() {
                   href="https://t.me/arsaaal" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200"
                 >
+                  <ArrowPathIcon className="h-5 w-5" />
                   Extend
                 </a>
               </div>
