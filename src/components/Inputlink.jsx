@@ -74,7 +74,7 @@ function Inputlink() {
         <div className="flex items-center justify-center mb-4">
           <img src={logo} alt="Logo" className="w-32 h-32"/>
         </div>
-        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
+        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-200">
           Check VPN Status
         </h2>
         <form className="space-y-8" onSubmit={checkVless}>
@@ -82,7 +82,7 @@ function Inputlink() {
           <div className="grid grid-cols-3 gap-4 mt-3 items-center">
             <label
               htmlFor="link"
-              className="text-end text-sm font-medium text-gray-900"
+              className="text-end text-sm font-medium text-gray-200"
             >
               Paste your Vless link:
             </label>
