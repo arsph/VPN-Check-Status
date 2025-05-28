@@ -43,8 +43,8 @@ function Inputlink() {
         const down = response.data.obj.down;
         const expiryTime = response.data.obj.expiryTime;
         const total = response.data.obj.total;
-        const remainedTraffic = Math.round((total - up - down) / 1024 / 1024 / 1024 * 100) / 100;
-        const totalTraffic = Math.round(total / 1024 / 1024 / 1024 * 100) / 100; 
+        const remainedTraffic = total === 0 ? "Unlimited" : Math.round((total - up - down) / 1024 / 1024 / 1024 * 100) / 100;
+        const totalTraffic = total === 0 ? "Unlimited" : Math.round(total / 1024 / 1024 / 1024 * 100) / 100; 
     
         const expiryTimestamp = new Date(expiryTime).getTime();
         const currentTime = new Date().getTime();
@@ -58,7 +58,8 @@ function Inputlink() {
           totalTraffic,
           remainedTraffic,
           expiryTime,
-          days,hours
+          days,
+          hours
         });
     
     } catch (error) {
@@ -109,7 +110,7 @@ function Inputlink() {
           <div>
             <div className="mt-3 grid grid-cols-5 gap-1 items-center rounded-full bg-gray-500 text-blue-950 text-center py-4 px-8 mx-6">
               <span className="col-span-3 col-start-2">User: <div className="font-bold inline-block">{userInfo.email}</div></span>
-              <span className="col-span-3 col-start-2">Remained Traffic: <div className="font-bold inline-block">{userInfo.remainedTraffic} of {userInfo.totalTraffic} GB</div></span>
+              <span className="col-span-3 col-start-2">Remained Traffic: <div className="font-bold inline-block">{userInfo.remainedTraffic === "Unlimited" ? "Unlimited" : `${userInfo.remainedTraffic} of ${userInfo.totalTraffic} GB`}</div></span>
               <span className="col-span-3 col-start-2">Expiry Time: <div className="font-bold inline-block">{userInfo.expiryTime === 0 ? "Unlimited" : userInfo.days + " Days & " + userInfo.hours + " hours"}</div></span>
             </div>
             {(userInfo.remainedTraffic < 10 || (userInfo.expiryTime !== 0 && userInfo.days < 10)) && (
