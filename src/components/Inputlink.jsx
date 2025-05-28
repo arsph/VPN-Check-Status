@@ -122,20 +122,20 @@ function Inputlink() {
 
         {userInfo && (
           <div>
-            <div className="mt-3 grid grid-cols-5 gap-1 items-center rounded-full bg-gray-500 text-blue-950 text-center py-4 px-8 mx-6">
-              <span className="col-span-3 col-start-2">User: <div className="font-bold inline-block">{userInfo.email}</div></span>
-              <span className="col-span-3 col-start-2">Remained Traffic: <div className="font-bold inline-block">{userInfo.remainedTraffic === "Unlimited" ? "Unlimited" : `${userInfo.remainedTraffic} of ${userInfo.totalTraffic} GB`}</div></span>
-              <span className="col-span-3 col-start-2">Expiry Time: <div className="font-bold inline-block">{userInfo.expiryTime === 0 ? "Unlimited" : userInfo.days + " Days & " + userInfo.hours + " hours"}</div></span>
+            <div className="mt-3 grid grid-cols-5 gap-1 items-center rounded-lg sm:rounded-full bg-gray-500 text-blue-950 text-center py-2 sm:py-4 px-2 sm:px-8 mx-2 sm:mx-6">
+              <span className="col-span-3 col-start-2 text-sm sm:text-base">User: <div className="font-bold inline-block">{userInfo.email}</div></span>
+              <span className="col-span-3 col-start-2 text-sm sm:text-base">Remained Traffic: <div className="font-bold inline-block">{userInfo.remainedTraffic === "Unlimited" ? "Unlimited" : `${userInfo.remainedTraffic} of ${userInfo.totalTraffic} GB`}</div></span>
+              <span className="col-span-3 col-start-2 text-sm sm:text-base">Expiry Time: <div className="font-bold inline-block">{userInfo.expiryTime === 0 ? "Unlimited" : userInfo.days + " Days & " + userInfo.hours + " hours"}</div></span>
             </div>
             {(userInfo.remainedTraffic < 10 || (userInfo.expiryTime !== 0 && userInfo.days < 10)) && (
-              <div className="mt-4 text-center">
+              <div className="mt-3 sm:mt-4 text-center">
                 <a 
                   href="https://t.me/arsaaal" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-1.5 sm:py-2 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base"
                 >
-                  <ArrowPathIcon className="h-5 w-5" />
+                  <ArrowPathIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                   Extend
                 </a>
               </div>
@@ -145,8 +145,8 @@ function Inputlink() {
 
         {err &&(
           <div>
-            <div className="mt-3 grid grid-cols-6 gap-1 items-center py-4 px-8 mx-6">
-              <span className="col-span-2 col-start-3 rounded-full bg-red-300 text-blue-950 text-center py-3"><div className="font-bold inline-block">{err}</div></span>
+            <div className="mt-3 grid grid-cols-6 gap-1 items-center py-2 sm:py-4 px-2 sm:px-8 mx-2 sm:mx-6">
+              <span className="col-span-2 col-start-3 rounded-lg sm:rounded-full bg-red-300 text-blue-950 text-center py-2 sm:py-3 text-sm sm:text-base"><div className="font-bold inline-block">{err}</div></span>
             </div>
           </div>
         )}
