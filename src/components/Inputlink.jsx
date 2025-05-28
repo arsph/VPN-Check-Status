@@ -74,7 +74,7 @@ function Inputlink() {
         <div className="flex items-center justify-center mb-4">
           <img src={logo} alt="Logo" className="w-32 h-32"/>
         </div>
-        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">
           Check VPN Status
         </h2>
         <form className="space-y-8" onSubmit={checkVless}>
@@ -82,7 +82,7 @@ function Inputlink() {
           <div className="grid grid-cols-3 gap-4 mt-3 items-center">
             <label
               htmlFor="link"
-              className="text-end text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="text-end text-sm font-medium text-white"
             >
               Paste your Vless link:
             </label>
@@ -111,6 +111,18 @@ function Inputlink() {
               <span className="col-span-3 col-start-2">Remained Traffic: <div className="font-bold inline-block">{userInfo.remainedTraffic} of {userInfo.totalTraffic} GB</div></span>
               <span className="col-span-3 col-start-2">Expiry Time: <div className="font-bold inline-block">{userInfo.expiryTime === 0 ? "Unlimited" : userInfo.days + " Days & " + userInfo.hours + " hours"}</div></span>
             </div>
+            {(userInfo.remainedTraffic < 10 || (userInfo.expiryTime !== 0 && userInfo.days < 10)) && (
+              <div className="mt-4 text-center">
+                <a 
+                  href="https://t.me/arsaaal" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200"
+                >
+                  Extend
+                </a>
+              </div>
+            )}
           </div>
         )}
 
