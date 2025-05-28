@@ -7,13 +7,16 @@ function Inputlink() {
 
   const [userInfo, setUserInfo] = useState(null);
   const [err, setErr] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const checkVless = async (e) => {
     e.preventDefault(); // Prevent page reload
+    setIsLoading(true);
+    setErr(null);
+    setUserInfo(null);
 
     let link = e.target.elements.link.value;
     let user = link.substring(link.lastIndexOf("-") + 1);
-    setErr(null); setUserInfo(null);
 
     try {
         await axios.post("/login", {
@@ -65,6 +68,8 @@ function Inputlink() {
     } catch (error) {
         // console.error("Error fetching data:", error);
         setErr("Invalid Vless link");
+    } finally {
+        setIsLoading(false);
     }
       
   };
@@ -91,18 +96,27 @@ function Inputlink() {
             <input
               type="text"
               id="link"
-              className="col-span-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+              className="col-span-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5"
               placeholder="Vless://"
               required
+              disabled={isLoading}
             />
           </div>
 
           {/* 🔹 Submit Button */}
           <button
             type="submit"
-            className="bg-blue-500 py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            className="bg-blue-500 py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+            disabled={isLoading}
           >
-            Check
+            {isLoading ? (
+              <>
+                <ArrowPathIcon className="h-5 w-5 animate-spin" />
+                Checking...
+              </>
+            ) : (
+              'Check'
+            )}
           </button>
         </form>
 
