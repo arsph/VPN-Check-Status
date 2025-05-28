@@ -82,14 +82,14 @@ function Inputlink() {
           <div className="grid grid-cols-3 gap-4 mt-3 items-center">
             <label
               htmlFor="link"
-              className="text-end text-sm font-medium text-gray-300"
+              className="text-end text-sm font-medium text-gray-900"
             >
               Paste your Vless link:
             </label>
             <input
               type="text"
               id="link"
-              className="col-span-2 shadow-sm bg-white border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5"
+              className="col-span-2 shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5"
               placeholder="Vless://"
               required
             />
