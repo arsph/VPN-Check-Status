@@ -2,7 +2,7 @@
 
 A React-based web application that allows users to check their VPN connection status and view detailed information about their network connection.
 
-Demo @ `https://v2check.vercel.app`
+[Demo @ `https://v2check.vercel.app`](https://v2check.vercel.app)
 
 ## Features
 
