@@ -1,74 +1,142 @@
-# VPN Status Checker
+# VPN Check Status
 
-A modern web application that allows users to check their VPN connection status, traffic usage, and expiration time. Built with React and styled using Tailwind CSS.
+A React-based web application that allows users to check their VPN connection status and view detailed information about their network connection.
+
+Demo @ `https://v2check.vercel.app`
 
 ## Features
 
-- 🔍 Real-time VPN status checking
-- 📊 Traffic usage monitoring
-- ⏰ Expiration time tracking
-- 📱 Responsive design
-- 🔄 Automatic status updates
-- 🔒 Secure authentication
-
-## Tech Stack
-
-- React.js
-- Axios for API requests
-- Tailwind CSS for styling
-- Heroicons for UI icons
+- Real-time VPN connection status monitoring
+- Detailed network information display
+- Responsive design for all devices
+- Docker containerization for easy deployment
+- AWS deployment support
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
-- Node.js (v14 or higher)
-- npm or yarn
+- Node.js (v20 or higher)
+- npm (v10 or higher)
+- Docker
+- AWS CLI (for AWS deployment)
+- Terraform (for infrastructure as code)
 
-## Installation
+## Local Development Setup
 
 1. Clone the repository:
-```bash
-git clone https://github.com/arsph/VPN-Check-Status
-cd v2check
-```
+   ```bash
+   git clone https://github.com/arsph/vpn-check-status.git
+   cd vpn-check-status
+   ```
 
 2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+   ```bash
+   npm install
+   ```
 
 3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Docker Setup
+
+1. Build the Docker image:
+   ```bash
+   docker build -t vpn-check-status .
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -d -p 80:80 vpn-check-status
+   ```
+
+3. Access the application at `http://localhost`
+
+## AWS Deployment
+
+### Prerequisites
+
+1. AWS CLI configured with appropriate credentials
+2. Terraform installed
+3. Docker installed and running
+
+### Deployment Steps
+
+1. Configure AWS credentials:
+   ```bash
+   aws configure
+   ```
+
+2. Initialize Terraform:
+   ```bash
+   terraform init
+   ```
+
+3. Review the deployment plan:
+   ```bash
+   terraform plan
+   ```
+
+4. Apply the infrastructure:
+   ```bash
+   terraform apply
+   ```
+
+5. Build and push the Docker image to ECR:
+   ```bash
+   aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 787434278367.dkr.ecr.eu-central-1.amazonaws.com
+   docker build -t vpn-check-status .
+   docker tag vpn-check-status:latest 787434278367.dkr.ecr.eu-central-1.amazonaws.com/vpn-check-status:latest
+   docker push 787434278367.dkr.ecr.eu-central-1.amazonaws.com/vpn-check-status:latest
+   ```
+
+### Infrastructure Components
+
+The AWS infrastructure includes:
+- EC2 instance (t2.nano)
+- ECR repository for Docker images
+- VPC with public subnet
+- Security group with HTTP access
+- Internet Gateway
+- Route Table
+
+## Project Structure
+
 ```
-
-## Usage
-
-1. Open the application in your web browser
-2. Paste your Vless link in the input field
-3. Click the "Check" button to view your VPN status
-4. View your:
-   - User information
-   - Remaining traffic
-   - Expiration time
-   - Connection status
-
-## API Integration
-
-The application integrates with a backend API to fetch VPN status information. Make sure to configure the following environment variables:
-
-```env
-VITE_API_URL=your_api_url
+vpn-check-status/
+├── src/
+│   ├── components/
+│   ├── App.tsx
+│   └── main.tsx
+├── public/
+├── Dockerfile
+├── nginx.conf
+├── terraform/
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+├── package.json
+└── README.md
 ```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- React
+- Vite
+- Docker
+- AWS
+- Terraform
