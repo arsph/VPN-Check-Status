@@ -18,13 +18,13 @@ export default defineConfig({
   server: {
     proxy: {
       '/login': {
-        target: 'https://api2.benzorango.net:443',
+        target: 'https://api.vark.cloud:443',
         changeOrigin: true,
         withCredentials: true,
         secure: false,
       },
       '/panel/api/inbounds/getClientTraffics': {
-        target: 'https://api2.benzorango.net:443',
+        target: 'https://api.vark.cloud:443',
         changeOrigin: true,
         withCredentials: true,
         secure: false,
