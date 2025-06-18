@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/login",
-      "destination": "https://api2.benzorango.net/login"
+      "destination": "https://api.vark.cloud:443/login"
     },
     {
       "source": "/panel/api/inbounds/getClientTraffics/:user",
-      "destination": "https://api2.benzorango.net/panel/api/inbounds/getClientTraffics/:user"
+      "destination": "https://api.vark.cloud:443/panel/api/inbounds/getClientTraffics/:user"
     }
   ],
   "headers": [

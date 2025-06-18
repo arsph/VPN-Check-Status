@@ -19,16 +19,22 @@ function Inputlink() {
     let user = link.substring(link.lastIndexOf("-") + 1);
 
     try {
-        await axios.post("/login", {
+        const loginResponse = await axios.post("/login", {
             username: "arsalan",
             password: "Arsi73Arsi73"},
             {
               withCredentials: true,
             });
 
-        } catch (error) {
-        // Handle errors
-        console.error('Error fetching data:', error);
+        if (loginResponse.status !== 200) {
+            throw new Error("Login failed");
+        }
+
+    } catch (error) {
+        console.error('Login error:', error);
+        setErr("Authentication failed. Please try again.");
+        setIsLoading(false);
+        return;
     }
 
     try {
@@ -36,7 +42,7 @@ function Inputlink() {
             { 
                 withCredentials: true });
     
-        if (response.data.obj === null) {
+        if (!response.data || response.data.obj === null) {
             throw new Error("Invalid Vless link");
         }
     
@@ -66,8 +72,14 @@ function Inputlink() {
         });
     
     } catch (error) {
-        // console.error("Error fetching data:", error);
-        setErr("Invalid Vless link");
+        console.error("Error fetching data:", error);
+        if (error.response && error.response.status === 404) {
+            setErr("Invalid Vless link or user not found");
+        } else if (error.response && error.response.status >= 500) {
+            setErr("Server error. Please try again later.");
+        } else {
+            setErr("Invalid Vless link");
+        }
     } finally {
         setIsLoading(false);
     }

@@ -16,26 +16,35 @@ export default defineConfig({
   // },
 
   server: {
+    cors: {
+      origin: true,
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    },
     proxy: {
       '/login': {
         target: 'https://api.vark.cloud:443',
         changeOrigin: true,
         withCredentials: true,
         secure: false,
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            proxyReq.setHeader('Origin', 'https://api.vark.cloud:443');
+          });
+        }
       },
       '/panel/api/inbounds/getClientTraffics': {
         target: 'https://api.vark.cloud:443',
         changeOrigin: true,
         withCredentials: true,
         secure: false,
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            proxyReq.setHeader('Origin', 'https://api.vark.cloud:443');
+          });
+        }
       },
     },
-  },
-  
-  headers: {
-    'Access-Control-Allow-Origin': '*', // Allow all origins
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', // Allowed methods
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization', // Allowed headers
-    'Access-Control-Allow-Credentials': 'true', // Allow cookies
   },
 });
