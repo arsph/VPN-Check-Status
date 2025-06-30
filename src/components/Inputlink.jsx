@@ -20,8 +20,8 @@ function Inputlink() {
 
     try {
         const loginResponse = await axios.post("/login", {
-            username: "arsalan",
-            password: "Arsi73Arsi73"},
+            username: import.meta.env.VITE_LOGIN_USERNAME,
+            password: import.meta.env.VITE_LOGIN_PASSWORD},
             {
               withCredentials: true,
             });

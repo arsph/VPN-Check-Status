@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/login",
-      "destination": "https://api.vark.cloud:443/login"
+      "destination": "https://de.vark.cloud:9090/login"
     },
     {
       "source": "/panel/api/inbounds/getClientTraffics/:user",
-      "destination": "https://api.vark.cloud:443/panel/api/inbounds/getClientTraffics/:user"
+      "destination": "https://de.vark.cloud:9090/panel/api/inbounds/getClientTraffics/:user"
     }
   ],
   "headers": [

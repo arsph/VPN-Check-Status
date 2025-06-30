@@ -24,24 +24,24 @@ export default defineConfig({
     },
     proxy: {
       '/login': {
-        target: 'https://api.vark.cloud:443',
+        target: 'https://de.vark.cloud:9090',
         changeOrigin: true,
         withCredentials: true,
         secure: false,
         configure: (proxy, options) => {
           proxy.on('proxyReq', (proxyReq, req, res) => {
-            proxyReq.setHeader('Origin', 'https://api.vark.cloud:443');
+            proxyReq.setHeader('Origin', 'https://de.vark.cloud:9090');
           });
         }
       },
       '/panel/api/inbounds/getClientTraffics': {
-        target: 'https://api.vark.cloud:443',
+        target: 'https://de.vark.cloud:9090',
         changeOrigin: true,
         withCredentials: true,
         secure: false,
         configure: (proxy, options) => {
           proxy.on('proxyReq', (proxyReq, req, res) => {
-            proxyReq.setHeader('Origin', 'https://api.vark.cloud:443');
+            proxyReq.setHeader('Origin', 'https://de.vark.cloud:9090');
           });
         }
       },
